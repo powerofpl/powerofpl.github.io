@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Shange's Homepage</title>
+  <style>
+     body {
+          max-width: 40em;
+          margin: .5in auto;
+          font-size: 18px;
+          font-family: serif;
+          line-height: 1.5;
+     }
+     pre, code {
+         font-size: 16px;
+         word-wrap: break-word;
+    }
+     pre {
+         border: 1px solid #9ca0b0;
+         border-radius: 5px;
+         padding: 10px;
+         overflow-x: auto;
+         font-family: 'Courier New', Courier, monospace;
+         color: #4c4c4c;
+         white-space: pre-wrap;
+    }
+     a {
+         color: #1a6e8e 
+    }
+     .menu a {
+         margin-right: 1em;
+    }
+     h1,h2,h3,h4,h5,h6 {
+         font-family: Helvetica;
+    }
+     h1 a,h2 a,h3 a,h4 a {
+         color: inherit;
+    }
+     .post-1,.post-2{
+         margin-bottom: 0.5em;
+    }
+     .author {
+         display: none;
+    }
+     footer {
+         margin-top: 1.5em;
+         padding-top: 1.5em;
+         border-top: 1px solid #ccc;
+         margin-bottom: 2em 
+    }
+     footer span {
+         display: none;
+    }
+     img {
+         max-width: 100% 
+    }
+     pre.sourceCode span.st {
+         color: #40a02b 
+    }
+     pre.sourceCode span.kw {
+         color: #8839ef 
+    }
+     pre.sourceCode span.fu {
+         color: #1e66f5 
+    }
+     pre.sourceCode span.ot {
+         color: #7287fd 
+    }
+     pre.sourceCode span.dt {
+         color: #DF8E1E 
+    }
+     pre.sourceCode span.co {
+         color: #666 
+    }
+     @media(max-width:767px){
+         body {
+             margin: 1px 4px;
+        }
+         h1, h2, .menu {
+             margin: 0;
+        }
+         h1 {
+             font-size: 1.5em;
+        }
+         h2 {
+             font-size: 1.125em;
+        }
+         h3 {
+             font-size: 1.0125em;
+        }
+         .menu a {
+             margin-right: 0.1em;
+        }
+         #archive {
+             margin-left: 1em;
+             margin-top: 0;
+             padding: 0
+        }
+         #archive .post-1, #archive .post-2 {
+             margin-bottom: 0.1em;
+        }
+    }
+     table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    unicode-bidi: isolate;
+    border-spacing: 2px;
+    border-color: gray;
+     }
+     .footnote-ref {
+         text-decoration: none;
+    }
+     li {
+         margin-top: 0.5em;
+         margin-bottom: 0.5em;
+    }
+  </style>
+</head>
+<body>
+$body$
+<footer>
+  <table style="width:100%">
+    <tr>
+      <td>
+        © $if(date)$ $date$ $endif$ 
+        <em>Shange</em>
+      </td>
+    </tr>
+  </table>
+</footer>
+</body>
+</html>
