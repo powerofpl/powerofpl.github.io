@@ -1,17 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
-<channel>
-<title>Shange's Blog</title>
-<link>https://powerofpl.org</link>
-<description><![CDATA[追求源于热爱，极致源于梦想。]]></description>
-<atom:link href="https://powerofpl.org/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Thu, 10 Oct 2024 13:37:43 +0800
-</lastBuildDate>
-<item><title><![CDATA[test]]></title><link>https://powerofpl.org/blogs/test</link><guid>https://powerofpl.org/blogs/test</guid><description><![CDATA[<!DOCTYPE html>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Shange's Blog</title><link>https://powerofpl.org</link><description><![CDATA[“随心之念，随风之行。”]]></description><atom:link href="https://powerofpl.org/rss.xml" rel="self" type="application/rss+xml" /><lastBuildDate>Sat, 12 Oct 2024 01:31:45 +0800
+</lastBuildDate><item><title><![CDATA[甄别“二手知识”很重要]]></title><link>https://powerofpl.org/blogs/yard-sale-knowledge</link><guid>https://powerofpl.org/blogs/yard-sale-knowledge</guid><description><![CDATA[<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>test</title>
+  <title>甄别“二手知识”很重要</title>
   <style>
      body {
           max-width: 40em;
@@ -124,14 +116,61 @@
 
 </head>
 <body>
-<h1>test</h1>
-<p>hello world</p>
+<h1>甄别“二手知识”很重要</h1>
+<p><em><strong>知识只有在产出地的时候才是最纯正的时候，当它经过其他人的脑子加工转播之后，它就失去了它最纯正的样貌，失去了它本来该有的样子。</strong></em><br />
+</p>
+<p>我已经忘了我什么时候开始，很少从博客、视频、公众号、帖子、论坛这些平台上学习新的知识了，这并不仅仅是因为我已经成长，更重要的是我发现绝大多数时候这些途径只会让我接触到<strong>二手知识</strong>。<br />
+</p>
+<p>现在是一个知识大爆炸的时代任何人都可以从互联网上找到新的知识来学习，但因个人的水平差异、认知差异、思想差异等原因造成对其他人的知识产生分歧，以自己加工后的知识重新输出到网上，所以博客、视频、公众号、帖子、论坛等平台都是二手知识的重灾区。<br />
+</p>
+<p>差不多两个月前 <code>go1.23</code> 刚开始发布了，更新了新的标准库
+<code>unique</code>，我在检索这个标准库的信息的时候发现了一个介绍
+<code>unique</code> 的博客《<a
+href="https://huizhou92.com/zh-cn/p/golang-1.23-%E6%96%B0%E7%9A%84-unique-%E5%8C%85/">Golang
+1.23: 新的 unique 包</a>》，博客的作者因自身的水平原因没有对
+<code>go</code> 有一个很好的认知，对 <code>unique</code>
+标准库得出一个十分荒谬的结果，他认为 <code>unique.Make</code> 出来后的
+<code>unique.Handle</code> 使用方法 <code>Value</code> 是在对
+<code>unique</code> 内部的 <code>map</code>
+进行查询访问导致的性能损耗，其根据是他的测试中使用
+<code>unique.Handle</code> 与顶级声明的字符串比较的 banchmark
+结果与顶级声明的字符串自己与自己对比的 banchmark
+结果对比出的结论。<br />
+</p>
+<p>显然博客作者自身能力不足且对 <code>go</code>
+的认知不高也没有完整的查看 <code>unique</code>
+的源码，才写出这样荒唐的测试来作证他的结论，<code>unique.Make</code>
+只是一个从 <code>weak ptr</code> 中创建的普通指针，<code>unique</code>
+很快就是因为在做相等运算的时候也只是比较 ptr
+来达到的效果，<code>go</code> 在比较这些 <code>string</code>
+等结构体包装的类型的时候也是先<strong> 比较 struct
+中的内容，如果struct中的指针不相等但 len
+相等就再比较指针指向的值</strong>，这样的优化来快速比较带来的开销。<br />
+</p>
+<p>综上所述，博客中使用 <code>t.Value() == Token</code> 比较慢是因为
+<code>t.Value()</code> 得到的字符串中的指针与 <code>Token</code>
+字符串中的指针并不相同，所以会比较慢，<code>t == Token</code>
+比较快是因为它俩结构体是一样的，所以只比较了结构体。至于为什么存入<code>unique.Make</code>
+中的字符串为什么与原来的不一样请自行去查看 <code>unique</code> 的<a
+href="https://cs.opensource.google/go/go/+/refs/tags/go1.23.2:src/unique/clone.go;l=24">源码</a>。<br />
+</p>
+<p>并不只是这类名不经传的小博客才会有这种误人子弟的二手知识，比如知名的博主<a
+href="https://www.ruanyifeng.com/blog/">阮一峰</a>，他的<a
+href="https://ruanyifeng.com/blog/2017/02/fp-tutorial.html">函数式编程入门</a>，文中对函数和范畴论的错误理解，让人贻笑大方，函数式编程与范畴论并没有多大关系，范畴论也不是只能再函数式编程范式中使用，只要你愿意你可以应用到c语言中，函数式编程范式也并不强调纯，只有纯函数式编程语言才强调纯，即使纯函数式编程语言也只是把不纯和带有副作用的函数规范起来，并不是完全的摒弃了不纯和副作用，real
+world
+就是不纯的带有副作用的，阮一峰错误的认知把纯函数式编程语言和函数式编程给混淆了，纯函数式编程语言和函数式编程是两个东西，就好比面向对象编程语言和面向对象是两个东西。<br />
+</p>
+<p>知识经过其他人的脑子处理后很大几率会丢失其原有的精度，如果上面举的例子是个人水平和认知的问题以外还有一些“Descriptivist
+theory of
+names”的人，把原有的语义词义全都改变得面目全非，这类作者喜欢把自己的小聪明带到这上面来彰显自己的能力，这与在写代码中炫技没有任何区别，仿佛让人看不懂，误人子弟就是他们想做的事一样。<br />
+</p>
+<p>但二手知识也并非完全是坏的，当知识原文本身就是晦涩难懂或者以自身目前的能力没办法马上理解的时候也是可以通过别人的二手知识来知道应该怎么去理解这个知识，但要要多方验证地辨别什么二手知识是误人子弟的错误，什么二手知识是信达雅的佳酿。</p>
 <footer>
   <table style="width:100%">
     <tr>
       <td>
-        ©  2024 
-        <a href="/"></a>
+        ©  2024-10-11 
+        <a href="/"><em>Shange</em></a>
       </td>
       <td style="text-align:right">
             <a href="">Read More Blog →</a>
@@ -141,8 +180,6 @@
 </footer>
 </body>
 </html>
-]]></description><pubDate>Thu, 10 Oct 2024 20:24:00 +0800
+]]></description><pubDate>Fri, 11 Oct 2024 00:00:00 +0800
 </pubDate><dc:creator>Shange</dc:creator></item>
-
-</channel>
-</rss>
+</channel></rss>
