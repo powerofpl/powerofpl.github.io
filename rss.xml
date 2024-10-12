@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Shange's Blog</title><link>https://powerofpl.org</link><description><![CDATA[“随心之念，随风之行。”]]></description><atom:link href="https://powerofpl.org/rss.xml" rel="self" type="application/rss+xml" /><lastBuildDate>Sat, 12 Oct 2024 21:08:11 +0800
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Shange's Blog</title><link>https://powerofpl.org</link><description><![CDATA[“随心之念，随风之行。”]]></description><atom:link href="https://powerofpl.org/rss.xml" rel="self" type="application/rss+xml" /><lastBuildDate>Sat, 12 Oct 2024 21:13:26 +0800
 </lastBuildDate><item><title><![CDATA[甄别“二手知识”很重要]]></title><link>https://powerofpl.org/blogs/yard-sale-knowledge</link><guid>https://powerofpl.org/blogs/yard-sale-knowledge</guid><description><![CDATA[<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
   <title>甄别“二手知识”很重要</title>
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
   <style>
      body {
           max-width: 40em;
